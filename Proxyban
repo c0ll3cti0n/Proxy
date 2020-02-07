@@ -1,0 +1,38 @@
+<?php
+// database configuration file
+include "config.php";
+//Tor ip list maneger 
+include "tor.php";
+// good dns server list for website
+include "dns.php";
+
+// basic proxy filter and storing to database
+
+$proxy_headers = array(
+    'HTTP_VIA',
+    'HTTP_X_FORWARDED_FOR',
+    'HTTP_FORWARDED_FOR',
+    'HTTP_X_FORWARDED',
+    'HTTP_X_FORWARDED_HOST',
+    'HTTP_FORWARDED_HOST',
+    'HTTP_FORWARDED',
+    'HTTP_CLIENT_IP',
+    'HTTP_FORWARDED_FOR_IP',
+    'VIA',
+    'X_FORWARDED_FOR',
+    'FORWARDED_FOR',
+    'X_FORWARDED_HOST',
+    'FORWARDED_HOST',
+    'X_FORWARDED',
+    'FORWARDED',
+    'CLIENT_IP',
+    'FORWARDED_FOR_IP',
+    'HTTP_PROXY_CONNECTION'
+   );
+   foreach($proxy_headers as $x){
+    if (isset($_SERVER[$x])) die("You are using a proxy!");
+   }
+
+// dns array to block bad dns 
+
+...... //developed but on testing 
