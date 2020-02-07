@@ -1,12 +1,21 @@
 # block proxy servers from site access
 # rename the file as .htaccess
-RewriteEngine on
-RewriteCond %{HTTP:VIA}                 !^$ [OR]
-RewriteCond %{HTTP:FORWARDED}           !^$ [OR]
-RewriteCond %{HTTP:USERAGENT_VIA}       !^$ [OR]
-RewriteCond %{HTTP:X_FORWARDED_FOR}     !^$ [OR]
-RewriteCond %{HTTP:PROXY_CONNECTION}    !^$ [OR]
-RewriteCond %{HTTP:XPROXY_CONNECTION}   !^$ [OR]
-RewriteCond %{HTTP:HTTP_PC_REMOTE_ADDR} !^$ [OR]
-RewriteCond %{HTTP:HTTP_CLIENT_IP}      !^$
-RewriteRule ^(.*)$ - [F]
+<IfModule mod_rewrite.c>
+ RewriteEngine on
+ RewriteCond %{HTTP:VIA}                 !^$ [OR]
+ RewriteCond %{HTTP:FORWARDED}           !^$ [OR]
+ RewriteCond %{HTTP:USERAGENT_VIA}       !^$ [OR]
+ RewriteCond %{HTTP:X_FORWARDED_FOR}     !^$ [OR]
+ RewriteCond %{HTTP:PROXY_CONNECTION}    !^$ [OR]
+ RewriteCond %{HTTP:XPROXY_CONNECTION}   !^$ [OR]
+ RewriteCond %{HTTP:HTTP_PC_REMOTE_ADDR} !^$ [OR]
+ RewriteCond %{HTTP:XROXY_CONNECTION}    !^$ [OR]
+ RewriteCond %{HTTP:X-FORWARDED-FOR}     !^$ [OR]
+ RewriteCond %{HTTP:HTTP_CLIENT_IP}      !^$ [OR]
+ RewriteCond %{HTTP:FORWARDED-FOR}       !^$ [OR]
+ RewriteCond %{HTTP:X-FORWARDED}         !^$
+ RewriteCond %{HTTP_REFERER}             !(.*)allowed-proxy-01.domain.tld(.*)
+ RewriteCond %{HTTP_REFERER}             !(.*)allowed-proxy-02.domain.tld(.*)
+ RewriteCond %{HTTP_REFERER}             !(.*)allowed-proxy-03.domain.tld(.*)
+ RewriteRule ^(.*)$ - [F]
+</IfModule>
