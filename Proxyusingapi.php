@@ -29,8 +29,8 @@ if (checkProxy($ip)) {
 
 	echo "It appears you're a Proxy / VPN / bad IP, Redirecting you to a page. <br />";
        //Set Refresh header using PHP
-        header( "refresh:5;url=http://yoursite.com/ip.html" );/
-
+        header( "refresh:5;url=http://yoursite.com/ip.html" );// change the site link with yours 
+       // Creat ip.html and write why you redirect the user and tell them to not use proxy ip
 }
 
 ?>
