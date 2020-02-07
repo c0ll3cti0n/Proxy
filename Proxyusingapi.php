@@ -26,9 +26,9 @@ function checkProxy($ip){
 $ip=$_SERVER['REMOTE_ADDR'];
 
 if (checkProxy($ip)) {
-	/* A proxy has been detected based on your criteria
-	 * Do whatever you want to here
-	 */
+
+//Set Refresh header using PHP
+header( "refresh:5;url=http://thisinterestsme.com/" );/
 	echo "It appears you're a Proxy / VPN / bad IP, please contact [put something here] for more information <br />";
 }
 
