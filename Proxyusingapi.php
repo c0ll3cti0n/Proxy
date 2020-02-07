@@ -27,9 +27,9 @@ $ip=$_SERVER['REMOTE_ADDR'];
 
 if (checkProxy($ip)) {
 
-	echo "It appears you're a Proxy / VPN / bad IP, Redirecting you to main page. <br />";
+	echo "It appears you're a Proxy / VPN / bad IP, Redirecting you to a page. <br />";
        //Set Refresh header using PHP
-        header( "refresh:5;url=http://thisinterestsme.com/" );/
+        header( "refresh:5;url=http://yoursite.com/ip.html" );/
 
 }
 
